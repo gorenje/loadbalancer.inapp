@@ -60,10 +60,6 @@ require_relative 'lib/redis_queue.rb'
 
 [
  ['routes'],
- ['models'],
 ].each do |path|
   Dir[File.join(File.dirname(__FILE__), path, '*.rb')].each { |f| require f }
 end
-
-# setup the campaign link cache
-$refresh_cam_lnk_cache.call

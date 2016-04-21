@@ -1,7 +1,7 @@
 # -*- ruby -*-
 source 'http://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.2.3'
 
 gem 'rake'
 gem 'sinatra', "1.3.4"
@@ -16,7 +16,6 @@ gem 'hiredis'
 gem 'redis', :require => ["redis", "redis/connection/hiredis"]
 gem 'ya_circuit_breaker', "0.0.3"
 
-gem 'maxminddb'
 gem 'pry'
 gem 'term-ansicolor'
 gem 'highline'
@@ -24,15 +23,6 @@ gem 'highline'
 gem 'fast_blank'
 gem 'oj'
 gem 'oj_mimic_json'
-
-gem 'net-sftp'
-
-gem 'activerecord'
-gem 'pg'
-gem 'active_record_migrations'
-gem 'activerecord-import'
-
-gem 'device_detector', :github => 'wlf/device_detector'
 
 group :test do
   gem 'hpricot'
@@ -47,9 +37,7 @@ group :development do
   gem 'thin' # so ruby application.rb works
   gem 'foreman'
   gem 'papertrail'
-  gem 'cheat'
   gem 'erubis'
   gem 'mail'
-  gem 'edgecast_api'
   gem 'dotenv'
 end

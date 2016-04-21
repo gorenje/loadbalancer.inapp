@@ -1,16 +1,6 @@
 # encoding: UTF-8
 module EccrineTracking
   module Helpers
-
-    def obtain_adid
-      adid = params[:adid] || params[:idfa] || params[:gadid]
-      ClickHandler.valid_adid?(adid) ? adid : nil
-    end
-
-    def appstore_from_params
-      (!params[:ascc].blank? && params[:ascc]) || nil
-    end
-
     def handle_tracking_call(redirect = true)
       click_handler = ClickHandler.new(params, request)
       url, code = click_handler.handle_call
