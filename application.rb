@@ -44,7 +44,6 @@ Dir[File.join(File.dirname(__FILE__),'config', 'initializers','*.rb')].
 
 use Librato::Rack
 
-require_relative 'lib/click_handler.rb'
 require_relative 'lib/ruby_extensions.rb'
 require_relative 'lib/exception_handling.rb'
 use ExceptionHandling
