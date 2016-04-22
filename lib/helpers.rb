@@ -1,19 +1,8 @@
 # encoding: UTF-8
 module EccrineTracking
   module Helpers
-    def handle_tracking_call(redirect = true)
-      click_handler = ClickHandler.new(params, request)
-      url, code = click_handler.handle_call
-
-      if url.blank?
-        halt(404)
-      elsif !redirect
-        [200, ['']]
-      elsif code
-        redirect url, code
-      else
-        File.read(File.join('public', 'index.html')) #just a file now
-      end
+    def if_blank(val,default)
+      val.blank? ? default : val
     end
 
     def click_queue
