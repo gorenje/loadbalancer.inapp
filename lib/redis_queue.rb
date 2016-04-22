@@ -10,11 +10,12 @@ class RedisQueue
   def push(click)
     unless ENV['LIBRATO_USER'].blank?
       $librato_aggregator.
-        add("#{ENV['LIBRATO_PREFIX']}.click.#{(click[:app_id]||"").gsub(/[^[:alnum:]]/, '')}" => 1)
+        add("#{ENV['LIBRATO_PREFIX']}.click."+
+            "#{(click[:app_id]||"").gsub(/[^[:alnum:]]/, '')}" => 1)
     end
 
     pool.execute do |redis|
-      redis.rpush(key, encode(click))
+      redis.rpush(key, click)
     end
   rescue EncodingError => e
     $stderr.puts "Encoding issue: #{click.inspect}"
@@ -48,14 +49,10 @@ class RedisQueue
 
 
   def pop(number_of_elements = 1)
-    elements = pool.execute do |redis|
+    pool.execute do |redis|
       redis.pipelined do |pipe|
         number_of_elements.times { pipe.lpop(key) }
       end
-    end
-
-    elements.compact.map do |element|
-      decode(element)
     end
   end
 
@@ -70,18 +67,8 @@ class RedisQueue
   def show
     pool.execute do |redis|
       redis.lrange(key, 0, 100).map do |clk|
-        decode(clk)
+        clk
       end
     end
-  end
-
-private
-
-  def encode(click)
-    JSON.dump(click)
-  end
-
-  def decode(click)
-    JSON.parse(click)
   end
 end

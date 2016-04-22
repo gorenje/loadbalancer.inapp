@@ -1,7 +1,7 @@
-Tracking
-========
+In App Tracking
+===============
 
-Eccrine tracking server.
+Eccrine in-app tracking server.
 
 ## Monitoring and logging
 
@@ -10,7 +10,7 @@ Eccrine tracking server.
 
 ## Deployment
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/eccrine/tracking)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/eccrine/tracking.inapp)
 
 ## Setup & Testing locally
 
