@@ -10,8 +10,7 @@ class RedisQueue
   def push(click)
     unless ENV['LIBRATO_USER'].blank?
       $librato_aggregator.
-        add("#{ENV['LIBRATO_PREFIX']}.click."+
-            "#{(click[:app_id]||"").gsub(/[^[:alnum:]]/, '')}" => 1)
+        add("#{ENV['LIBRATO_PREFIX']}.click" => 1)
     end
 
     pool.execute do |redis|
