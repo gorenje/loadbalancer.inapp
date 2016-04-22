@@ -42,12 +42,5 @@
       "description": "unicorn worker count",
       "value": "5" 
     }
-  },
-  "addons": [
-    "papertrail:fredrik",
-    "librato:development",
-    "ssl:endpoint",
-    "newrelic:murdock",
-    "heroku-postgresql"
-  ]
+  }
 }
