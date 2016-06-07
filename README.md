@@ -26,7 +26,7 @@ specific event type is the string after the final '/' (slash).
 
 This means that these two paths represent the same install
 event ```/fubar/ist``` and ```/som/moe/rpa/ist```. By convention the path
-is should be ```/t/ist```, i.e. with a leading ```/t```.
+should be ```/t/ist```, i.e. with a leading ```/t```.
 
 ### Redis storage
 
@@ -46,11 +46,11 @@ are separeted by a single space):
    using geoip lookup.
 2. Timestamp in seconds since epoch when the request was recieved by the
    tracker.
-3. Kafka topic to store the message. In this case, the subdomain of the host
-   of the request.
+3. Kafka topic to store the message. In this case, the subdomain of the request
+   host.
 4. Event type which is represented by the request path.
 5. Original query string of the request or if blank, a single 'p'.
-6. User agent is appened on the end. This the later converted to device
+6. User agent is appended to the end. This the later converted to device
    information by the [kafkastore](https://github.com/adtekio/kafkastore/blob/a9e3670011c71fcc669a46e62df95d06683cae79/lib/batch_worker.rb#L27). Note: the user agent
    can contain spaces, the user agent is assumed to be everything after query
    string.
@@ -60,10 +60,17 @@ needs updating, along with the [click tracker](https://github.com/adtekio/tracki
 
 ## Deployment
 
+Easiest way to deploy this, is to use heroku!
+
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/adtekio/tracking.inapp)
 
 ## Setup & Testing locally
 
-To start the server:
+Generate a ```.env``` and then fill it with values:
 
-    foreman start
+    prompt> rake appjson:to_dotenv
+    prompt> $EDITOR .env
+
+Start the application:
+
+    prompt> foreman start
