@@ -45,29 +45,4 @@ class RedisQueue
 
     NewRelic::Agent.notice_error(e)
   end
-
-
-  def pop(number_of_elements = 1)
-    pool.execute do |redis|
-      redis.pipelined do |pipe|
-        number_of_elements.times { pipe.lpop(key) }
-      end
-    end
-  end
-
-  def size
-    pool.execute {|redis| redis.llen(key)}
-  end
-
-  def clear!
-    pool.execute {|redis| redis.del(key)}
-  end
-
-  def show
-    pool.execute do |redis|
-      redis.lrange(key, 0, 100).map do |clk|
-        clk
-      end
-    end
-  end
 end
