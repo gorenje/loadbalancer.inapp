@@ -65,5 +65,11 @@ class TrackingTest < Minitest::Test
       assert_last_response_was_gif
       assert_queue_entry(/127\.0\.0\.1 [0-9]+ example \/t\/t fubar=snafu iPhone/)
     end
+
+    should "work nil remote ip" do
+      get("/t/t", {}, {'REMOTE_ADDR' => nil, "HTTP_X_FORWARDED_FOR" => nil})
+      assert_last_response_was_gif
+      assert_queue_entry(/0\.0\.0\.0 [0-9]+ example \/t\/t p /)
+    end
   end
 end

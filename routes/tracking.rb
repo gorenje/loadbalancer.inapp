@@ -12,7 +12,8 @@ end
 
 get '*' do
   RedisQueue.new($redis_pool).
-    push("%s %i %s %s %s %s" % [request.ip, Time.now.to_i,
+    push("%s %i %s %s %s %s" % [request.ip || '0.0.0.0',
+                                Time.now.to_i,
                                 request.host.split(".").first,
                                 request.path,
                                 if_blank(request.query_string, "p"),
