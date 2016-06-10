@@ -6,6 +6,10 @@ get '/apple-*.png' do
   return_one_by_one_pixel
 end
 
+get '/robots.txt' do
+  "User-agent: *\nDisallow: /\n"
+end
+
 get '*' do
   RedisQueue.new($redis_pool).
     push("%s %i %s %s %s %s" % [request.ip, Time.now.to_i,
