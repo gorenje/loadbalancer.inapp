@@ -56,9 +56,5 @@ end
 
 require_relative 'lib/redis_pool.rb'
 require_relative 'lib/redis_queue.rb'
-
-[
- ['routes'],
-].each do |path|
-  Dir[File.join(File.dirname(__FILE__), path, '*.rb')].each { |f| require f }
-end
+require_relative 'routes/pingdom.rb'
+require_relative 'routes/tracking.rb'
