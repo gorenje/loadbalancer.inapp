@@ -1,0 +1,9 @@
+sudo: required
+dist: trusty
+language: ruby
+rvm:
+  - 2.2.3
+services:
+  - redis-server
+before_install:
+  - bundle config git.allow_insecure true

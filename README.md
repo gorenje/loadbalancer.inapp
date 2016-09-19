@@ -1,5 +1,4 @@
-In-App Event Tracking Endpoint
-====
+# In-App Event Tracking Endpoint
 
 Application for providing an endpoint for in-app events. Events are then
 passed off to redis for storage in kafka. Some other features of note:
@@ -17,7 +16,7 @@ This application has the same purpose as the
 in-app events. The click tracker has more logic since it also has to
 handle redirects to application stores (i.e. google and apple).
 
-### Kafka topic and event types
+## Kafka topic and event types
 
 Hence the code is [extremely concise](https://github.com/adtekio/tracking.inapp/blob/448d1b81b921bf77896a467e15358bc6f022cc56/routes/tracking.rb#L10-L15).
 The only thing to note here is that the subdomain determines the kafka topic
@@ -28,7 +27,7 @@ This means that these two paths represent the same install
 event ```/fubar/ist``` and ```/som/moe/rpa/ist```. By convention the path
 should be ```/t/ist```, i.e. with a leading ```/t```.
 
-### Redis storage
+## Redis storage
 
 The string that is pushed to redis is structured as follows (all values
 are separeted by a single space):
@@ -63,6 +62,10 @@ needs updating, along with the [click tracker](https://github.com/adtekio/tracki
 Easiest way to deploy this, is to use heroku!
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/adtekio/tracking.inapp)
+
+## Travis
+
+[![Build Status](https://travis-ci.org/adtekio/tracking.inapp.svg?branch=master)](https://travis-ci.org/adtekio/tracking.inapp)
 
 ## Setup & Testing locally
 

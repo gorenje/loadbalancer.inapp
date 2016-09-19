@@ -4,7 +4,7 @@ ENV['IP']            = 'www.example.com'
 ENV['PORT']          = '9999'
 ENV['TZ']            = 'UTC'
 
-ENV['REDIS_URL_CLICKSTORE_1'] = "redis://localhost:6379/27"
+ENV['REDIS_URL_CLICKSTORE_1'] = "redis://localhost:6379/12"
 
 require "bundler/setup"
 require 'rack/test'
